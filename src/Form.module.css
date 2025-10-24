@@ -1,0 +1,30 @@
+.emailContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.firstNameContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.lastNameContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.ageContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.studentContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.classContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
