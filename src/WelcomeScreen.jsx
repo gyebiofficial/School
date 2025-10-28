@@ -15,7 +15,6 @@ function Header(){
 
     return(
         <>
-        
         <header className={styles.header}>
             <nav className={styles.navbar}>
                 <div className={styles.logoContainer}>
@@ -32,37 +31,59 @@ function Header(){
                     <li className={styles.navItem}><a href="#" className={styles.navLink}>Home</a></li>
                     <li className={styles.navItem}><a href="#" className={styles.navLink}>About</a></li>
                     <li className={styles.navItem}><a href="#" className={styles.navLink}>Contact</a></li>
-                    <li className={styles.navItem}><a href="#" className={styles.navLink}>Dashboard</a></li>
+                    <li className={styles.navItem}><a href="#" className={styles.navLink}>Login</a></li>
                 </ul>
-                {/* Conditional rendering based on authentication status */}
+                
+                {/* Simple Conditional: UserButton if user exists, Icon if not */}
                 {isSignedIn ? (
-                    // Show UserButton when signed in (includes profile, sign out, etc.)
-                    <UserButton 
-                        appearance={{
-                            elements: {
-                                avatarBox: "w-12 h-12"
-                            }
-                        }}
-                    />
-                ) : (
-                    // Show Sign Up button when not signed in
-                    <div className={styles.authButtons}>
-                        <SignUpButton mode="modal">
-                            <button className={styles.userIconButton}>
-                                <FaRegCircleUser />
-                            </button>
-                        </SignUpButton>
+                    <div className={styles.userIconButton}>
+                        <UserButton 
+                            appearance={{
+                                elements: {
+                                    avatarBox: {
+                                        width: '2.2rem',
+                                        height: '2.2rem'
+                                    },
+                                    userButtonPopoverCard: {
+                                        pointerEvents: 'initial'
+                                    }
+                                }
+                            }}
+                        />
                     </div>
+                ) : (
+                    <SignUpButton mode="modal">
+                        <button className={styles.userIconButton}>
+                            <FaRegCircleUser />
+                        </button>
+                    </SignUpButton>
                 )}
             </nav>
         </header>
         
         <main className={styles.mainContent}>
-            <h1 className={styles.welcomeTitle}>Welcome to EduConnect</h1>
-            <h2 className={styles.subtitle}>Empowering Education Through Technology</h2>
+            {/* Method 2: Logical AND - Only shows if condition is true */}
+            {isSignedIn && (
+                <div>
+                    <h1 className={styles.welcomeTitle}>Welcome back, {user?.firstName}!</h1>
+                </div>
+            )}
+            
+            {/* Method 2: Logical AND - Only shows if condition is false */}
+            {!isSignedIn && (
+                <div>
+                    <h1 className={styles.welcomeTitle}>Welcome to EduConnect</h1>
+                </div>
+            )}
+            
+            {/* <h2 className={styles.subtitle}>Empowering Education Through Technology</h2>
             <div className={styles.description}>
                 Connecting students and educators worldwide through innovative learning solutions
-            </div>
+            </div> */}
+            <p className="text-gray-600 max-w-xl mb-6">
+              A modern School Management System for Teachers, Students, and Administrators.
+              Manage attendance, grades, fees, and communication all in one place.
+           </p>
         </main>
         </>
     )
